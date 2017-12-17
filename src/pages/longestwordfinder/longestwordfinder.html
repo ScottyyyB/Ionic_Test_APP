@@ -14,5 +14,17 @@
 
 
 <ion-content padding>
+  <ion-list>
+    <input type="string" [(ngModel)]="input"/>
+    <input type="submit" (click)="longestWord(input)"/>
+  </ion-list>
 
+  <ion-card *ngIf="this.output">
+    <ion-card-header>
+      Longest Word
+    </ion-card-header>
+    <ion-card-content>
+      <p>Word: {{this.output}}</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

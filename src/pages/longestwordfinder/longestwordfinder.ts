@@ -14,6 +14,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'longestwordfinder.html',
 })
 export class LongestwordfinderPage {
+  input: string;
+  output: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -22,4 +24,17 @@ export class LongestwordfinderPage {
     console.log('ionViewDidLoad LongestwordfinderPage');
   }
 
+  longestWord(sen) {
+    sen = sen.split('');
+    for (let i = 0; i < sen.length; i++) {
+      if (sen[i] == '.' || sen[i] == '!') {
+        delete(sen[i]);
+      }
+    }
+    sen = sen.join('').split(' ');
+    sen.sort(function(a, b) {
+      return b.length-a.length;
+    });
+    this.output = sen.slice(0, 1).join('');
+  }
 }
